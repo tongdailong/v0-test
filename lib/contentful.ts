@@ -1,4 +1,16 @@
 import { createClient } from "contentful"
+import type {
+  ContentfulRichTextNode,
+  ContentfulRichText,
+  ContentfulAsset,
+  ContentfulEntry,
+  ContentfulResponse,
+  BlogPost,
+  CaseStudy,
+  HomePage,
+  TeamMember,
+  Testimonial
+} from "./contentful-types"
 
 // Create client with your credentials
 const client = createClient({
@@ -7,52 +19,57 @@ const client = createClient({
 })
 
 // Helper function to convert Contentful rich text to HTML
-function convertRichTextToHtml(content: any): string {
+function convertRichTextToHtml(content: ContentfulRichText | ContentfulRichTextNode | ContentfulRichTextNode[] | string | null | undefined): string {
   if (typeof content === 'string') {
     return content
   }
   
   if (typeof content === 'object' && content !== null) {
+    // If it's an array of ContentfulRichTextNode
+    if (Array.isArray(content)) {
+      return content.map(item => convertRichTextToHtml(item)).join('')
+    }
+    
     // If it's a Contentful rich text object
-    if (content.content && Array.isArray(content.content)) {
-      return content.content.map((node: any) => {
+    if ('content' in content && Array.isArray(content.content)) {
+      return content.content.map((node: ContentfulRichTextNode) => {
         if (node.nodeType === 'paragraph') {
-          return `<p>${node.content?.map((textNode: any) => textNode.value || '').join('') || ''}</p>`
+          return `<p>${node.content?.map((textNode: ContentfulRichTextNode) => textNode.value || '').join('') || ''}</p>`
         }
         if (node.nodeType === 'heading-1') {
-          return `<h1>${node.content?.map((textNode: any) => textNode.value || '').join('') || ''}</h1>`
+          return `<h1>${node.content?.map((textNode: ContentfulRichTextNode) => textNode.value || '').join('') || ''}</h1>`
         }
         if (node.nodeType === 'heading-2') {
-          return `<h2>${node.content?.map((textNode: any) => textNode.value || '').join('') || ''}</h2>`
+          return `<h2>${node.content?.map((textNode: ContentfulRichTextNode) => textNode.value || '').join('') || ''}</h2>`
         }
         if (node.nodeType === 'heading-3') {
-          return `<h3>${node.content?.map((textNode: any) => textNode.value || '').join('') || ''}</h3>`
+          return `<h3>${node.content?.map((textNode: ContentfulRichTextNode) => textNode.value || '').join('') || ''}</h3>`
         }
         if (node.nodeType === 'heading-4') {
-          return `<h4>${node.content?.map((textNode: any) => textNode.value || '').join('') || ''}</h4>`
+          return `<h4>${node.content?.map((textNode: ContentfulRichTextNode) => textNode.value || '').join('') || ''}</h4>`
         }
         if (node.nodeType === 'heading-5') {
-          return `<h5>${node.content?.map((textNode: any) => textNode.value || '').join('') || ''}</h5>`
+          return `<h5>${node.content?.map((textNode: ContentfulRichTextNode) => textNode.value || '').join('') || ''}</h5>`
         }
         if (node.nodeType === 'heading-6') {
-          return `<h6>${node.content?.map((textNode: any) => textNode.value || '').join('') || ''}</h6>`
+          return `<h6>${node.content?.map((textNode: ContentfulRichTextNode) => textNode.value || '').join('') || ''}</h6>`
         }
         if (node.nodeType === 'unordered-list') {
-          return `<ul>${node.content?.map((listItem: any) => 
-            `<li>${listItem.content?.map((textNode: any) => textNode.value || '').join('') || ''}</li>`
+          return `<ul>${node.content?.map((listItem: ContentfulRichTextNode) => 
+            `<li>${listItem.content?.map((textNode: ContentfulRichTextNode) => textNode.value || '').join('') || ''}</li>`
           ).join('') || ''}</ul>`
         }
         if (node.nodeType === 'ordered-list') {
-          return `<ol>${node.content?.map((listItem: any) => 
-            `<li>${listItem.content?.map((textNode: any) => textNode.value || '').join('') || ''}</li>`
+          return `<ol>${node.content?.map((listItem: ContentfulRichTextNode) => 
+            `<li>${listItem.content?.map((textNode: ContentfulRichTextNode) => textNode.value || '').join('') || ''}</li>`
           ).join('') || ''}</ol>`
         }
         if (node.nodeType === 'list-item') {
-          return `<li>${node.content?.map((textNode: any) => textNode.value || '').join('') || ''}</li>`
+          return `<li>${node.content?.map((textNode: ContentfulRichTextNode) => textNode.value || '').join('') || ''}</li>`
         }
         if (node.nodeType === 'hyperlink') {
           const url = node.data?.uri || '#'
-          const text = node.content?.map((textNode: any) => textNode.value || '').join('') || ''
+          const text = node.content?.map((textNode: ContentfulRichTextNode) => textNode.value || '').join('') || ''
           return `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`
         }
         if (node.nodeType === 'text') {
@@ -73,90 +90,12 @@ function convertRichTextToHtml(content: any): string {
     }
     
     // If it's a simple object with content property
-    if (content.content) {
-      return convertRichTextToHtml(content.content)
-    }
-    
-    // If it's an array
-    if (Array.isArray(content)) {
-      return content.map(item => convertRichTextToHtml(item)).join('')
+    if ('content' in content && content.content) {
+      return convertRichTextToHtml(content.content as ContentfulRichTextNode[])
     }
   }
   
   return String(content || '')
-}
-
-export interface BlogPost {
-  title: string
-  slug: string
-  excerpt: string
-  content: string
-  publishedDate: string
-  author: string
-  category: string
-  featuredImage: {
-    url: string
-    title: string
-  }
-}
-
-export interface CaseStudy {
-  title: string
-  slug: string
-  description: string
-  industry: string
-  results: string[]
-  featuredImage: {
-    url: string
-    title: string
-  }
-  content: string
-}
-
-export interface HomePage {
-  heroHeadline: string
-  heroSubheadline: string
-  heroCtaText: string
-  heroImage: {
-    url: string
-    title: string
-  }
-  statsSection: {
-    trafficIncrease: string
-    conversionRate: string
-    successfulProjects: string
-  }
-  testimonials: Testimonial[]
-}
-
-export interface Testimonial {
-  quote: string
-  clientName: string
-  clientCompany: string
-  clientPhoto: {
-    url: string
-    title: string
-  }
-  rating: number
-}
-
-export interface Service {
-  name: string
-  description: string
-  icon: string
-  features: string[]
-  slug: string
-}
-
-export interface TeamMember {
-  name: string
-  role: string
-  bio: string
-  image: {
-    url: string
-    title: string
-  }
-  expertise: string[]
 }
 
 // Mock data fallbacks
@@ -174,6 +113,7 @@ const mockHomePage: HomePage = {
     conversionRate: "85%",
     successfulProjects: "500+",
   },
+  featuredServices: [],
   testimonials: [
     {
       quote:
@@ -280,7 +220,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
       return mockBlogPosts
     }
 
-    return entries.items.map((item: any) => ({
+    return entries.items.map((item: ContentfulEntry) => ({
       title: item.fields.title || "Untitled",
       slug: item.fields.slug || "untitled",
       excerpt: item.fields.excerpt || "",
@@ -319,7 +259,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
       return mockPost || null
     }
 
-    const item = entries.items[0] as any
+    const item = entries.items[0] as ContentfulEntry
     return {
       title: item.fields.title || "Untitled",
       slug: item.fields.slug || "untitled",
@@ -384,7 +324,7 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
       ]
     }
 
-    return entries.items.map((item: any) => ({
+    return entries.items.map((item: ContentfulEntry) => ({
       title: item.fields.title || "Untitled Case Study",
       slug: item.fields.slug || "untitled",
       description: item.fields.description || "",
@@ -396,7 +336,7 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
           : "/placeholder.svg?height=400&width=600",
         title: item.fields.featuredImage?.fields.title || "Case study image",
       },
-      content: item.fields.content || "",
+      content: convertRichTextToHtml(item.fields.content) || "",
     }))
   } catch (error) {
     console.error("Error fetching case studies from Contentful:", error)
@@ -416,7 +356,7 @@ export async function getHomePage(): Promise<HomePage> {
       return mockHomePage
     }
 
-    const item = entries.items[0] as any
+    const item = entries.items[0] as ContentfulEntry
     return {
       heroHeadline: item.fields.heroHeadline || mockHomePage.heroHeadline,
       heroSubheadline: item.fields.heroSubheadline || mockHomePage.heroSubheadline,
@@ -430,6 +370,7 @@ export async function getHomePage(): Promise<HomePage> {
         conversionRate: item.fields.conversionRate || mockHomePage.statsSection.conversionRate,
         successfulProjects: item.fields.successfulProjects || mockHomePage.statsSection.successfulProjects,
       },
+      featuredServices: item.fields.featuredServices || mockHomePage.featuredServices,
       testimonials: item.fields.testimonials || mockHomePage.testimonials,
     }
   } catch (error) {
@@ -471,7 +412,7 @@ export async function getTeamMembers(): Promise<TeamMember[]> {
       ]
     }
 
-    return entries.items.map((item: any) => ({
+    return entries.items.map((item: ContentfulEntry) => ({
       name: item.fields.name || "Team Member",
       role: item.fields.role || "Team Member",
       bio: item.fields.bio || "",
