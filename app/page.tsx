@@ -52,7 +52,7 @@ export default function Home() {
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Our Impact in Numbers</h2>
               <p className="max-w-[900px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                We've helped businesses achieve remarkable growth through our proven SEO strategies.
+                We&apos;ve helped businesses achieve remarkable growth through our proven SEO strategies.
               </p>
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold">On-Page SEO</h3>
               <p className="text-zinc-500 dark:text-zinc-400">
-                Optimize your website's content and structure to rank higher in search results.
+                Optimize your website&apos;s content and structure to rank higher in search results.
               </p>
               <Link href="/services/on-page-seo" className="text-emerald-600 hover:underline dark:text-emerald-500">
                 Learn more →
@@ -127,7 +127,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold">Technical SEO</h3>
               <p className="text-zinc-500 dark:text-zinc-400">
-                Improve your website's technical aspects to enhance search engine crawling and indexing.
+                Improve your website&apos;s technical aspects to enhance search engine crawling and indexing.
               </p>
               <Link href="/services/technical-seo" className="text-emerald-600 hover:underline dark:text-emerald-500">
                 Learn more →
@@ -154,7 +154,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold">Link Building</h3>
               <p className="text-zinc-500 dark:text-zinc-400">
-                Earn high-quality backlinks to boost your website's authority and rankings.
+                Earn high-quality backlinks to boost your website&apos;s authority and rankings.
               </p>
               <Link href="/services/link-building" className="text-emerald-600 hover:underline dark:text-emerald-500">
                 Learn more →
@@ -191,7 +191,7 @@ export default function Home() {
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Success Stories</h2>
               <p className="max-w-[900px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                See how we've helped businesses like yours achieve remarkable growth.
+                See how we&apos;ve helped businesses like yours achieve remarkable growth.
               </p>
             </div>
           </div>
@@ -269,7 +269,7 @@ export default function Home() {
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">What Our Clients Say</h2>
               <p className="max-w-[900px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                Don't just take our word for it. Hear from businesses we've helped.
+                Don&apos;t just take our word for it. Hear from businesses we&apos;ve helped.
               </p>
             </div>
           </div>
@@ -292,8 +292,8 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-zinc-500 dark:text-zinc-400">
-                  "Working with this SEO agency transformed our online presence. Our organic traffic has increased by
-                  200% in just 6 months."
+                  &quot;Working with this SEO agency transformed our online presence. Our organic traffic has increased by
+                  200% in just 6 months.&quot;
                 </p>
               </div>
               <div className="flex items-center space-x-4">
@@ -328,8 +328,8 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-zinc-500 dark:text-zinc-400">
-                  "Their data-driven approach to SEO helped us identify opportunities we were missing. Our conversions
-                  have increased by 150%."
+                  &quot;Their data-driven approach to SEO helped us identify opportunities we were missing. Our conversions
+                  have increased by 150%.&quot;
                 </p>
               </div>
               <div className="flex items-center space-x-4">
@@ -364,8 +364,8 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-zinc-500 dark:text-zinc-400">
-                  "The team's expertise in technical SEO resolved issues that were holding our site back for years. Our
-                  rankings improved dramatically."
+                  &quot;The team&apos;s expertise in technical SEO resolved issues that were holding our site back for years. Our
+                  rankings improved dramatically.&quot;
                 </p>
               </div>
               <div className="flex items-center space-x-4">
@@ -408,7 +408,7 @@ export default function Home() {
                 <Button className="bg-emerald-600 hover:bg-emerald-700">Get Started</Button>
               </form>
               <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                We'll get back to you within 24 hours. No spam, we promise.
+                We&apos;ll get back to you within 24 hours. No spam, we promise.
               </p>
             </div>
           </div>

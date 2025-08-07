@@ -14,7 +14,7 @@ export default function AboutPage() {
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">About Our SEO Agency</h1>
                 <p className="max-w-[600px] text-zinc-500 md:text-xl dark:text-zinc-400">
-                  We're a team of SEO experts passionate about helping businesses grow through data-driven strategies.
+                  We&apos;re a team of SEO experts passionate about helping businesses grow through data-driven strategies.
                 </p>
               </div>
             </div>
@@ -52,11 +52,11 @@ export default function AboutPage() {
                   of search engine optimization with transparency and measurable results.
                 </p>
                 <p className="text-zinc-500 dark:text-zinc-400">
-                  Over the years, we've evolved with the ever-changing digital landscape, staying ahead of algorithm
+                  Over the years, we&apos;ve evolved with the ever-changing digital landscape, staying ahead of algorithm
                   updates and industry trends to deliver cutting-edge strategies that drive real business growth.
                 </p>
                 <p className="text-zinc-500 dark:text-zinc-400">
-                  Today, we're proud to have helped hundreds of businesses across various industries achieve their
+                  Today, we&apos;re proud to have helped hundreds of businesses across various industries achieve their
                   growth goals through strategic SEO.
                 </p>
               </div>
@@ -209,7 +209,7 @@ export default function AboutPage() {
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter">Ready to Work With Us?</h2>
               <p className="max-w-[900px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                Let's discuss how we can help your business grow through strategic SEO.
+                Let&apos;s discuss how we can help your business grow through strategic SEO.
               </p>
             </div>
             <Link href="/contact">

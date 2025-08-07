@@ -65,7 +65,7 @@ export default function CaseStudiesPage() {
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Success Stories</h1>
               <p className="max-w-[900px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                See how we've helped businesses like yours achieve remarkable growth through strategic SEO.
+                See how we&apos;ve helped businesses like yours achieve remarkable growth through strategic SEO.
               </p>
             </div>
           </div>

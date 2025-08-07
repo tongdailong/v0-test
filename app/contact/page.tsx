@@ -244,8 +244,8 @@ export default function ContactPage() {
             <div className="space-y-2">
               <h3 className="text-xl font-bold">Do you guarantee first-page rankings?</h3>
               <p className="text-zinc-500 dark:text-zinc-400">
-                We don't guarantee specific rankings as search engines constantly evolve their algorithms. However, we
-                do guarantee that we'll use industry best practices and data-driven strategies to improve your
+                We don&apos;t guarantee specific rankings as search engines constantly evolve their algorithms. However, we
+                do guarantee that we&apos;ll use industry best practices and data-driven strategies to improve your
                 visibility.
               </p>
             </div>
