@@ -132,7 +132,7 @@ export default function ServicesPage() {
                 </div>
                 <h2 className="text-3xl font-bold">Technical SEO</h2>
                 <p className="text-zinc-500 dark:text-zinc-400">
-                  Our technical SEO service addresses the behind-the-scenes elements that impact your website's
+                  Our technical SEO service addresses the behind-the-scenes elements that impact your website&apos;s
                   performance. We optimize site speed, mobile-friendliness, indexability, and other technical factors
                   that affect rankings.
                 </p>
@@ -223,7 +223,7 @@ export default function ServicesPage() {
                 <h2 className="text-3xl font-bold">Link Building</h2>
                 <p className="text-zinc-500 dark:text-zinc-400">
                   Our link building service focuses on earning high-quality backlinks from authoritative websites in
-                  your industry. We use ethical, white-hat techniques to build your site's authority and improve
+                  your industry. We use ethical, white-hat techniques to build your site&apos;s authority and improve
                   rankings.
                 </p>
                 <ul className="space-y-2">

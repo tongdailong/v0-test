@@ -2,14 +2,11 @@ import { createClient } from "contentful"
 import type {
   ContentfulRichTextNode,
   ContentfulRichText,
-  ContentfulAsset,
   ContentfulEntry,
-  ContentfulResponse,
   BlogPost,
   CaseStudy,
   HomePage,
-  TeamMember,
-  Testimonial
+  TeamMember
 } from "./contentful-types"
 
 // Create client with your credentials
